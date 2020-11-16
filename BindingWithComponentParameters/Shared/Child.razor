@@ -1,0 +1,28 @@
+﻿@page "/Child"
+
+<div class="card bg-light mt-3" style="width:18rem ">
+    <div class="card-body">
+        <h3 class="card-title">Child Component</h3>
+        <p class="card-text">Child <code>Year</code>: @ChildYear</p>
+    </div>
+</div>
+
+<button @onclick="UpdateYearFromChild">Update Year from Child</button>
+
+@code {
+    private Random r = new Random();
+
+    [Parameter]
+    public int ChildYear { get; set; }
+
+
+    //The callback (EventCallback<TValue>) must be named as the component parameter name followed by the
+    //"Changed" suffix ({PARAMETER NAME}Changed). 
+    [Parameter]
+    public EventCallback<int> ChildYearChanged { get; set; }
+
+    private async Task UpdateYearFromChild()
+    {
+        await ChildYearChanged.InvokeAsync(r.Next(1950, 2021));
+    }
+}

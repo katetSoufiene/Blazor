@@ -1,0 +1,43 @@
+﻿@page "/"
+
+<p>
+    bind
+    <input @bind="currentFieldValue" /> Current Field Value: @currentFieldValue
+</p>
+
+<p>
+    bind
+    <input @bind="CurrentPropertyValue" /> Current Property Value: @CurrentPropertyValue
+</p>
+
+<p>
+    onchange - ChangeEventArgs
+    <input value="@CurrentValue" @onchange="@((ChangeEventArgs e) => CurrentValue =  e.Value.ToString())" /> Current Value: @CurrentValue
+</p>
+
+<p>
+    bind:event
+    <input @bind="CurrenOnInputtValue" @bind:event="oninput" /> Current Value: @CurrenOnInputtValue
+</p>
+
+<p>
+    bind:format
+
+    <input @bind="startDate" @bind:format="yyyy-MM-dd" />
+
+    <input type="date" @bind="startDate" @bind:format="yyyy-MM-dd">
+</p>
+    @code {
+
+        private string currentFieldValue;
+
+        private string CurrentPropertyValue { get; set; }
+
+        private string CurrentValue { get; set; }
+
+        private string CurrenOnInputtValue { get; set; }
+
+        private DateTime startDate = new DateTime(2020, 1, 1);
+
+
+    }

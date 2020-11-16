@@ -1,0 +1,27 @@
+﻿@page "/"
+
+
+<p>
+    <button class="btn btn-primary" @onclick="ShowMessage">  Update heading  </button>
+</p>
+
+<p>
+    <input type="checkbox" class="form-check-input" @onchange="CheckChanged" />  checkbox
+</p>
+<p>
+    @Message
+</p>
+
+@code {
+    public string Message { get; set; }
+
+    private void ShowMessage(MouseEventArgs e)
+    {
+        Message = $"The mouse is at coordinates: {e.ScreenX}:{e.ScreenY}"; ;//"Update button Clicked";
+    }
+
+    private void CheckChanged()
+    {
+        Message = "checkbox hanged";
+    }
+}
